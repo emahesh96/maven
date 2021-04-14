@@ -1,0 +1,66 @@
+Installation
+1.Download maven on jenkins server. In our case it is /opt/maven
+	*wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+
+Untar:
+●tar -xvzf apachefolder 
+For path :
+Pwd in cmd
+Set that path in M2_homme and update in path
+
+2.setupM2_Home and M2 paths in .bash_profile of user.(.bash_profile is in root user)
+
+M2_HOME=/opt/maven/apache-maven-3.6.3
+M2=$M2_HOME/bin
+PATH=$JAVA_HOME/bin:$M2_HOME:$M2:$PATH
+
+Open duplicate session and check if path is setup or not
+
+For that go to root user
+*echo $PATH 
+
+Configuration:
+1.login to jenkins Console
+2.install maven and git without reastart
+
+Now go to manage jenkins
+*Manage jenkins->manage plugins -> Available -> “maven Invoker”
+
+3.set maven git path
+
+	*Manage jenkins =>Global tool configuration =>Maven
+
+
+
+
+
+3.install git
+ 	#yum install git
+4.check maven version
+	#mvn -version
+
+Configuration:
+1.login to jenkins Console
+2.install maven and git without reastart
+	*Manage jenkins->manage plugins -> Available -> “maven Invoker” and “maven integration”
+* Manage jenkins =>Manage plugins =>Availabale =>”github”
+
+3.set maven git path
+
+	*Manage jenkins =>Global tool configuration =>Maven
+	*Manage jenkins =>Global tool configuration =>git
+
+Run a test Job
+
+1.create a new Item
+2.Enter an item name - hello-world
+	->Choose maven project
+3.select “git ” as source code management and give below maven project
+
+	*git - https://github.com/arsr319/maven-hello-world.git
+	Golas - install package
+4. Save your job
+5.Build Job
+6.Check “console output”
+
+
